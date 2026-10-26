@@ -5,7 +5,7 @@ const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(
 const TOP=()=>[...new Set(BANK.map(q=>q.topic))].sort();
 function prep(q,shuffle){const o={...q};if(q.type==='TF'){o.opts=['True','False'];o.correct=q.ans==='T'?0:1}
  else{let idx=q.choices.map((_,i)=>i);const fixed=q.choices.some(c=>/(all|none|both) of the above|^[A-D] and [A-D]/i.test(c));if(shuffle&&!fixed)idx=shuf(idx);o.opts=idx.map(i=>q.choices[i]);o.correct=idx.indexOf(q.ans)}return o}
-function why(q){let s='<b>Answer:</b> '+esc(q.opts[q.correct]).replace(/\.$/,'')+'.';if(q.exp&&q.exp!==q.q)s+=(q.type==='TF'&&q.ans==='F'?' <b>Correct statement:</b> ':' ')+esc(q.exp);
+function why(q){let s='<b>Answer:</b> '+esc(q.opts[q.correct]).replace(/\.$/,'')+'.';if(q.exp&&q.exp!==q.q)s+=(q.type==='TF'&&q.ans==='F'?' <b>Correct statement:</b> ':' ')+esc(q.exp.replace(/\s*\(RONR topic:[^)]*\)\s*$/,''));
  return s+(q.section?'<div class="muted">RONR topic: '+esc(q.section)+'</div>':'')}
 function pick({n,mix,topics,fresh}){let pool=BANK.filter(q=>topics.includes(q.topic));const seen=new Set(S.seen);
  const take=(arr,k)=>{let a=shuf(arr);if(fresh){const un=a.filter(q=>!seen.has(q.id));a=un.length>=k?un:un.concat(a.filter(q=>seen.has(q.id)))}return a.slice(0,k)};
@@ -38,7 +38,7 @@ function printTest(qs){const p=qs.map(q=>prep(q,true));const L='ABCDE';
  $('#print').innerHTML=`<h1>Parliamentary Procedure Test</h1><p>Name: ____________________ Date: __________ Score: ____ / ${p.length}</p>
  ${p.map((q,i)=>`<div class="pq"><b>${i+1}.</b> ${q.type==='TF'?'T&nbsp;&nbsp;F&nbsp;&nbsp; ':''}${esc(q.q)}${q.type==='MC'?'<br>'+q.opts.map((o,j)=>`&nbsp;&nbsp;${L[j]}) ${esc(o)}`).join('<br>'):''}</div>`).join('')}
  <p style="font-size:9pt">Tactical Edge Solutions · Parli Pro Test Generator · Based on Robert's Rules of Order Newly Revised</p>
- <div class="key"><h1>Answer Key (Advisor)</h1>${p.map((q,i)=>`<div class="pq"><b>${i+1}.</b> ${q.type==='TF'?(q.correct?'F':'T'):L[q.correct]}. <span style="font-size:10pt">${q.section?'RONR topic: '+esc(q.section):''}${q.exp&&q.exp!==q.q?' · '+esc(q.exp):''}</span></div>`).join('')}</div>`;
+ <div class="key"><h1>Answer Key (Advisor)</h1>${p.map((q,i)=>`<div class="pq"><b>${i+1}.</b> ${q.type==='TF'?(q.correct?'F':'T'):L[q.correct]}. <span style="font-size:10pt">${q.section?'RONR topic: '+esc(q.section):''}${q.exp&&q.exp!==q.q?' · '+esc(q.exp.replace(/\s*\(RONR topic:[^)]*\)\s*$/,'')):''}</span></div>`).join('')}</div>`;
  setTimeout(()=>print(),50)}
 let F=null;function study(ids){const topics=TOP();M().innerHTML=`<div class="card"><h2 style="margin-top:0">Flashcards</h2><label>Topic</label><select id="st"><option value="">All topics</option>${topics.map(t=>`<option>${esc(t)}</option>`).join('')}</select><button class="btn" id="sb">Start</button></div><div id="fc"></div>`;
  $('#sb').onclick=()=>{const t=$('#st').value;F={qs:shuf(BANK.filter(q=>!t||q.topic===t)).map(q=>prep(q,false)),i:0,flip:false};card()};if(ids){F={qs:shuf(BANK.filter(q=>ids.includes(q.id))).map(q=>prep(q,false)),i:0};card()}}
