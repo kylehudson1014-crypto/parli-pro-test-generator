@@ -54,7 +54,7 @@ function progress(){const h=S.hist,avg=h.length?Math.round(100*h.reduce((a,x)=>a
  <button class="btn alt" onclick="if(confirm('Reset all progress on this device?')){localStorage.removeItem('pp');location.reload()}">Reset progress</button></div>`}
 function about(){M().innerHTML=`<div class="card"><h2 style="margin-top:0">About</h2><p>Parli Pro Test Generator by <b>Tactical Edge Solutions</b>: practice tests for parliamentary procedure teams and advisors, based on <i>Robert's Rules of Order Newly Revised</i> (12th ed., 2020). Explanations name the RONR topic only.</p>
  <p>Works offline once loaded. On iPhone or iPad, tap Share → <b>Add to Home Screen</b>.</p><p class="muted">Not affiliated with or endorsed by the Robert's Rules Association or the National FFA Organization.</p></div>`}
-const V={gen,study:()=>study(),review,progress,about};
-$('#nav').onclick=e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));V[b.dataset.v]()};
-fetch('bank.json').then(r=>r.json()).then(b=>{BANK=b;gen()});
+const V={play:()=>play(),gen,study:()=>study(),review,progress,about};
+$('#nav').onclick=e=>{if(window.stopPoll)stopPoll();if(typeof SP!=='undefined'&&SP){clearInterval(SP.tm);SP=null}const b=e.target.closest('button');if(!b)return;document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));V[b.dataset.v]()};
+fetch('bank.json').then(r=>r.json()).then(b=>{BANK=b;(window.play||gen)()});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');

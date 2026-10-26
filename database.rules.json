@@ -1,0 +1,16 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "rooms": {
+      "$code": {
+        ".read": "$code.matches(/^[A-Z]{4}$/)",
+        ".write": "$code.matches(/^[A-Z]{4}$/) && (!data.exists() || data.child('created').val() > now - 86400000 || !newData.exists() || newData.child('created').val() > now - 60000)",
+        ".validate": "newData.hasChildren(['created','mode']) && newData.child('created').isNumber() && newData.child('created').val() <= now + 60000 && (newData.child('mode').val() === 'stump' || newData.child('mode').val() === 'battle')",
+        "players": { ".validate": "newData.numChildren() <= 8", "$pid": { ".validate": "$pid.length <= 12 && newData.child('name').isString() && newData.child('name').val().length <= 16" } },
+        "answers": { "$k": { ".validate": "$k.length <= 12" } },
+        "qids": { ".validate": "newData.numChildren() <= 20" }
+      }
+    }
+  }
+}

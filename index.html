@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Parli Pro Test Generator</title>
-<meta name="theme-color" content="#0b2545"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1a1446"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Parli Pro">
 <link rel="apple-touch-icon" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest">
 <style>
@@ -34,8 +34,49 @@ input,select{font-size:17px;padding:10px;border-radius:10px;border:1px solid #bb
 #print{display:none}
 @media print{body{background:#fff}header,main,nav{display:none!important}#print{display:block;font:12pt/1.4 Georgia,serif;color:#000}
 #print h1{font-size:16pt}#print .pq{break-inside:avoid;margin:8px 0}#print .key{break-before:page}}
+
+:root{--n:#3a2bd1;--g:#ffc83d;--bg:#f3f1ff;--card:#fff;--tx:#17142e;--mu:#6b6790;--bd:#d9d5f5;--sel:#ece9ff}
+[data-theme=dark]{--n:#8c7bff;--bg:#100d24;--card:#1d1940;--tx:#f1efff;--mu:#a9a3d6;--bd:#3a3470;--sel:#2c2660;--ok:#3ccf6e;--bad:#ff6b6b;color-scheme:dark}
+body{background:var(--bg)!important;color:var(--tx)!important;font-family:-apple-system,"SF Pro Rounded",system-ui,sans-serif!important}
+header{background:linear-gradient(135deg,#2a1d9e,#6a2bd1 60%,#c2185b)!important}
+.hrow{display:flex;align-items:center;gap:8px}.brand{flex:1;font-size:20px}.brand small{font-size:11px}
+.ico{background:#ffffff22;border:0;border-radius:12px;width:44px;height:44px;font-size:20px;color:#fff}
+#hud{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap}.pill{background:#ffffff26;border-radius:20px;padding:3px 10px;font-size:14px;font-weight:700}.pill.lv{background:var(--g);color:#2a1d9e}
+.xpbar{flex:1;min-width:80px;height:8px;background:#ffffff30;border-radius:8px;overflow:hidden}.xpbar i{display:block;height:100%;background:linear-gradient(90deg,#ffc83d,#ff7a59);border-radius:8px;transition:width .6s}
+.xpbar.big{height:14px;background:var(--sel);margin:8px 0 4px}
+nav button{background:#ffffff1f!important;border-radius:20px!important}nav button.on{background:var(--g)!important;color:#2a1d9e!important}
+.card{background:var(--card)!important;border-radius:20px!important;box-shadow:0 4px 18px #2a1d9e1a!important}
+.muted{color:var(--mu)!important}.muted2{color:var(--mu);font-size:13px}
+input,select{background:var(--card);color:var(--tx);border-color:var(--bd)!important}
+.btn{background:var(--n)!important;border-radius:16px!important;box-shadow:0 4px 0 #0003;transition:transform .08s}.btn:active{transform:translateY(3px);box-shadow:none}
+.btn.alt{background:transparent!important;color:var(--n)!important;border:2px solid var(--n)!important;box-shadow:none}.btn.big{font-size:20px;padding:14px 30px}.btn[disabled]{opacity:.5}
+.opt{background:var(--card)!important;color:var(--tx)!important;border-color:var(--bd)!important;border-radius:16px!important;transition:transform .08s}.opt:active{transform:scale(.98)}
+.opt i{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;border-radius:50%;background:var(--sel);font-style:normal;font-weight:700;margin-right:6px}
+.opt.sel{border-color:var(--n)!important;background:var(--sel)!important}.opt.ok{border-color:var(--ok)!important;background:#3ccf6e2e!important;animation:pop .3s}.opt.bad{border-color:var(--bad)!important;background:#ff6b6b2e!important;animation:shake .35s}.opt.dim{opacity:.75}
+@keyframes pop{50%{transform:scale(1.03)}}@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.exp{background:var(--sel)!important;border-left-color:var(--g)!important;color:var(--tx)}.exp.good{border-left-color:var(--ok)!important}.exp.nope{border-left-color:var(--bad)!important}
+.qlist button{background:var(--card);color:var(--tx)}
+.hero{display:flex;gap:14px;align-items:center}.lvbig{width:72px;height:72px;border-radius:50%;background:conic-gradient(var(--g),#ff7a59,var(--g));display:flex;align-items:center;justify-content:center;font-weight:800;color:#2a1d9e;font-size:18px;flex:none}
+.streak{text-align:center;flex:none}.streak b{font-size:24px;display:block;line-height:1}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}@media(min-width:768px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tile{border:0;border-radius:22px;padding:16px 12px;color:#fff;text-align:left;min-height:140px;display:flex;flex-direction:column;gap:4px;box-shadow:0 6px 0 #0002;font:inherit;transition:transform .08s}.tile:active{transform:translateY(4px);box-shadow:none}
+.tile span{font-size:34px}.tile b{font-size:18px}.tile small{opacity:.9;font-size:13px;line-height:1.3}
+.t1{background:linear-gradient(135deg,#ff7a59,#ff3d77)}.t2{background:linear-gradient(135deg,#4cc9f0,#4361ee)}.t3{background:linear-gradient(135deg,#9d4edd,#5a189a)}.t4{background:linear-gradient(135deg,#2ec4b6,#138a72)}.tile.off{filter:grayscale(.85);opacity:.6}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}.bdg{text-align:center;padding:8px 4px;border-radius:14px;background:var(--sel);opacity:.45;filter:grayscale(1)}.bdg.got{opacity:1;filter:none;box-shadow:0 0 0 2px var(--g) inset}
+.bdg span{font-size:28px;display:block}.bdg b{font-size:12px;display:block}.bdg small{font-size:10px;color:var(--mu);display:block;line-height:1.2}
+.center{text-align:center}.gold{color:#e0a100}
+.qtop{display:flex;justify-content:space-between;align-items:center;font-weight:700;color:var(--mu)}.qtext{font-size:21px;line-height:1.35}
+.prog{height:8px;background:var(--sel);border-radius:8px;overflow:hidden;margin:8px 0}.prog i{display:block;height:100%;background:var(--n);transition:width .3s}.prog.t i{background:linear-gradient(90deg,#ff3d77,#ffc83d);width:100%;transition:width .2s linear}
+.timer{font-size:28px;color:var(--n);min-width:44px}.timer.hot{color:var(--bad);animation:pop .5s infinite}
+.toast{position:fixed;left:50%;top:calc(80px + env(safe-area-inset-top));transform:translateX(-50%);background:#17142e;color:#fff;padding:10px 18px;border-radius:30px;z-index:50;box-shadow:0 6px 20px #0005;transition:opacity .4s,transform .4s;max-width:90vw;text-align:center}.toast.gold{background:linear-gradient(135deg,#ffc83d,#ff7a59);color:#2a1d9e}.toast.out{opacity:0;transform:translate(-50%,-20px)}
+.confetti{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
+.floater{position:absolute;font-weight:800;color:var(--ok);font-size:22px;z-index:45;animation:up .9s forwards;pointer-events:none}@keyframes up{to{transform:translateY(-50px);opacity:0}}
+.bigcode{font-size:56px;font-weight:800;letter-spacing:10px;color:var(--n);margin:6px 0}.code{text-align:center;font-size:28px;letter-spacing:8px;text-transform:uppercase;max-width:260px;margin:0 auto 6px;display:block}
+.or{margin:14px 0;color:var(--mu)}.pickq{display:block;width:100%;text-align:left;background:var(--sel);color:var(--tx);border:0;border-radius:16px;padding:14px;margin:8px 0;font:inherit}.pickq small{display:block;color:var(--mu);margin-top:6px}
+.res{padding:8px 0;border-bottom:1px solid var(--bd)}.turn{text-align:center;font-weight:800;font-size:18px;padding:10px;border-radius:14px;background:var(--sel);margin:8px 0}.turn.mine{background:linear-gradient(135deg,#ffc83d,#ff7a59);color:#2a1d9e;animation:pop .6s 2}
+.board div{display:flex;gap:10px;align-items:center;background:var(--card);border-radius:14px;padding:10px 14px;margin:6px 0;box-shadow:0 2px 8px #0001}.board b{flex:1}.board em{font-style:normal;font-weight:800;color:var(--n)}.board .act{outline:3px solid var(--g)}.board .me b:after{content:" (you)";color:var(--mu);font-weight:400}
 </style></head><body>
-<header><div><b>Parli Pro</b> Test Generator<small>Tactical Edge Solutions · Based on Robert's Rules of Order Newly Revised (12th ed.)</small></div>
-<nav id="nav"><button data-v="gen" class="on">Generate</button><button data-v="study">Study</button><button data-v="review">Missed</button><button data-v="progress">Progress</button><button data-v="about">About</button></nav></header>
+<header><div class="hrow"><div class="brand">🔨 <b>Parli Pro</b><small>Robert's Rules practice · RONR 12th ed.</small></div><button id="mute" class="ico" aria-label="Sound">🔊</button><button id="thm" class="ico" aria-label="Dark mode">🌙</button></div><div id="hud"></div>
+<nav id="nav"><button data-v="play" class="on">🎮 Play</button><button data-v="gen">📝 Test</button><button data-v="study">🃏 Study</button><button data-v="review">🔁 Missed</button><button data-v="progress">📈 Progress</button><button data-v="about">ℹ️ About</button></nav></header>
 <main id="m"></main><div id="print"></div>
-<script src="app.js"></script></body></html>
+<script src="firebase-config.js"></script><script src="app.js"></script><script src="game.js"></script></body></html>
