@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Parli Pro Test Generator</title>
+<meta name="theme-color" content="#0b2545"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Parli Pro">
+<link rel="apple-touch-icon" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--n:#0b2545;--g:#f4b400;--ok:#1b7f3b;--bad:#b3261e;--bg:#f5f6f8}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font:17px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:#111;-webkit-text-size-adjust:100%}
+header{background:var(--n);color:#fff;padding:calc(10px + env(safe-area-inset-top)) calc(14px + env(safe-area-inset-right)) 10px calc(14px + env(safe-area-inset-left));position:sticky;top:0;z-index:5}
+header b{color:var(--g)}header small{display:block;opacity:.75;font-size:12px}
+nav{display:flex;gap:6px;overflow-x:auto;margin-top:8px}
+nav button{background:#1d3a66;color:#fff;border:0;border-radius:10px;padding:10px 14px;min-height:44px;font-size:15px;white-space:nowrap}
+nav button.on{background:var(--g);color:var(--n);font-weight:700}
+main{padding:14px calc(14px + env(safe-area-inset-right)) calc(30px + env(safe-area-inset-bottom)) calc(14px + env(safe-area-inset-left));max-width:1100px;margin:auto}
+.card{background:#fff;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 3px #0002}
+label{display:block;margin:10px 0 4px;font-weight:600}
+input,select{font-size:17px;padding:10px;border-radius:10px;border:1px solid #bbb;width:100%;min-height:44px}
+.btn{background:var(--n);color:#fff;border:0;border-radius:12px;padding:12px 18px;min-height:48px;font-size:17px;font-weight:600;margin:6px 6px 0 0}
+.btn.alt{background:#fff;color:var(--n);border:2px solid var(--n)}
+.topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px}
+.topics label{font-weight:400;display:flex;gap:8px;align-items:center;margin:0;min-height:44px}
+.topics input{width:22px;min-height:22px}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid #ccd;border-radius:12px;padding:12px;margin:8px 0;min-height:48px;font-size:17px}
+.opt.sel{border-color:var(--n);background:#e8eefb}.opt.ok{border-color:var(--ok);background:#e6f4ea}.opt.bad{border-color:var(--bad);background:#fbe9e7}
+.exp{background:#fff8e1;border-left:4px solid var(--g);padding:10px;border-radius:8px;margin-top:8px;font-size:15px}
+.split{display:grid;gap:14px}
+@media(min-width:768px){.split{grid-template-columns:260px 1fr}.qlist{position:sticky;top:120px;max-height:calc(100vh - 140px);overflow:auto}}
+.qlist button{width:44px;height:44px;margin:3px;border-radius:10px;border:1px solid #bbb;background:#fff;font-size:15px}
+.qlist button.ans{background:#dfe7f5}.qlist button.cur{outline:3px solid var(--g)}.qlist button.ok{background:#c8e6c9}.qlist button.bad{background:#ffcdd2}
+.flash{min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:20px;cursor:pointer}
+.muted{color:#666;font-size:14px}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:140px}
+#print{display:none}
+@media print{body{background:#fff}header,main,nav{display:none!important}#print{display:block;font:12pt/1.4 Georgia,serif;color:#000}
+#print h1{font-size:16pt}#print .pq{break-inside:avoid;margin:8px 0}#print .key{break-before:page}}
+</style></head><body>
+<header><div><b>Parli Pro</b> Test Generator<small>Tactical Edge Solutions · Based on Robert's Rules of Order Newly Revised (12th ed.)</small></div>
+<nav id="nav"><button data-v="gen" class="on">Generate</button><button data-v="study">Study</button><button data-v="review">Missed</button><button data-v="progress">Progress</button><button data-v="about">About</button></nav></header>
+<main id="m"></main><div id="print"></div>
+<script src="app.js"></script></body></html>
