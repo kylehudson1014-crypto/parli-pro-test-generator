@@ -57,4 +57,4 @@ function about(){M().innerHTML=`<div class="card"><h2 style="margin-top:0">About
 const V={play:()=>play(),gen,study:()=>study(),review,progress,about};
 $('#nav').onclick=e=>{if(window.stopPoll)stopPoll();if(typeof SP!=='undefined'&&SP){clearInterval(SP.tm);SP=null}const b=e.target.closest('button');if(!b)return;document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));V[b.dataset.v]()};
 fetch('bank.json').then(r=>r.json()).then(b=>{BANK=b;(window.play||gen)()});
-if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
+if('serviceWorker'in navigator&&!window.Capacitor)navigator.serviceWorker.register('sw.js');

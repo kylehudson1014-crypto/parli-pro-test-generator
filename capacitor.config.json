@@ -1,0 +1,3 @@
+{"appId":"com.tacticaledgesolutions.parlipro","appName":"Parli Pro","webDir":"www",
+"ios":{"contentInset":"never","scrollEnabled":false,"backgroundColor":"#100d24"},
+"plugins":{"LocalNotifications":{"iconColor":"#5b4bff"}}}

@@ -76,7 +76,7 @@ input,select{background:var(--card);color:var(--tx);border-color:var(--bd)!impor
 .res{padding:8px 0;border-bottom:1px solid var(--bd)}.turn{text-align:center;font-weight:800;font-size:18px;padding:10px;border-radius:14px;background:var(--sel);margin:8px 0}.turn.mine{background:linear-gradient(135deg,#ffc83d,#ff7a59);color:#2a1d9e;animation:pop .6s 2}
 .board div{display:flex;gap:10px;align-items:center;background:var(--card);border-radius:14px;padding:10px 14px;margin:6px 0;box-shadow:0 2px 8px #0001}.board b{flex:1}.board em{font-style:normal;font-weight:800;color:var(--n)}.board .act{outline:3px solid var(--g)}.board .me b:after{content:" (you)";color:var(--mu);font-weight:400}
 </style></head><body>
-<header><div class="hrow"><div class="brand">🔨 <b>Parli Pro</b><small>Robert's Rules practice · RONR 12th ed.</small></div><button id="mute" class="ico" aria-label="Sound">🔊</button><button id="thm" class="ico" aria-label="Dark mode">🌙</button></div><div id="hud"></div>
+<header><div class="hrow"><div class="brand">🔨 <b>Parli Pro</b><small>Robert's Rules practice · RONR 12th ed.</small></div><button id="mute" class="ico" aria-label="Sound">🔊</button><button id="bell" class="ico" aria-label="Streak reminder" style="display:none">🔔</button><button id="thm" class="ico" aria-label="Dark mode">🌙</button></div><div id="hud"></div>
 <nav id="nav"><button data-v="play" class="on">🎮 Play</button><button data-v="gen">📝 Test</button><button data-v="study">🃏 Study</button><button data-v="review">🔁 Missed</button><button data-v="progress">📈 Progress</button><button data-v="about">ℹ️ About</button></nav></header>
 <main id="m"></main><div id="print"></div>
-<script src="firebase-config.js"></script><script src="app.js"></script><script src="game.js"></script></body></html>
+<script src="firebase-config.js"></script><script src="app.js"></script><script src="game.js"></script><script src="native.js"></script></body></html>
